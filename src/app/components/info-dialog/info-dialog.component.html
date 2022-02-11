@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>Title: {{data.issueTitle}}</div>
+<div mat-dialog-content>Author: <a [href]="data.userUrl">{{data.userLogin}} - {{data.userUrl}}</a></div>
+<div mat-dialog-content>Parent repository: <a [href]="data.repository_url">{{data.repository_url}}</a></div>
+<div mat-dialog-content>Url: <a [href]="data.html_url">{{data.html_url}}</a></div>
+<div mat-dialog-content>Issue number: {{data.number}}</div>
+<div mat-dialog-content>State: {{data.state}}</div>
+<div mat-dialog-content>Created at: {{data.created_at}}</div>
+<div mat-dialog-actions>
+  <button [mat-dialog-close]>Close</button>
+</div>

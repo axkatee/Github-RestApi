@@ -1,0 +1,8 @@
+table {
+  width: 100%;
+}
+
+.on-hover:hover {
+  cursor: pointer;
+  opacity: .7;
+}
