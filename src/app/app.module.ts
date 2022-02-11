@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TableComponent } from './components/table/table.component';
 import { ApiService } from "./services/api.service";
-import { MatTableModule } from "@angular/material/table";
-import { MatPaginatorModule } from "@angular/material/paginator";
-import { MatSortModule } from "@angular/material/sort";
+import { AppComponent } from './app.component';
+import { TableComponent } from './components/table/table.component';
 import { InfoDialogComponent } from './components/info-dialog/info-dialog.component';
+import { FormsModule } from "@angular/forms";
+import { MatSortModule } from "@angular/material/sort";
+import { BrowserModule } from '@angular/platform-browser';
+import { MatTableModule } from "@angular/material/table";
 import { MatDialogModule } from "@angular/material/dialog";
+import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
