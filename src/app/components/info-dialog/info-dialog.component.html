@@ -7,5 +7,5 @@
 <div mat-dialog-content>State: {{data.state}}</div>
 <div mat-dialog-content>Created at: {{data.created_at}}</div>
 <div mat-dialog-actions>
-  <button [mat-dialog-close]>Close</button>
+  <button (click)="closeDialog()">Close</button>
 </div>

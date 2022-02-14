@@ -3,7 +3,7 @@ export interface IIssues {
   id: string;
   active_lock_reason?: null;
   assignee?: null;
-  assignees?: [];
+  assignees?: any[];
   author_association?: string;
   body?: string;
   closed_at?: null;
@@ -13,7 +13,7 @@ export interface IIssues {
   draft?: boolean;
   events_url?: string;
   html_url?: string;
-  labels?: [];
+  labels?: any[];
   labels_url?: string;
   locked?: boolean;
   milestone?: null;
@@ -28,6 +28,12 @@ export interface IIssues {
   title?: string;
   updated_at?: Date;
   user?: object;
+}
+
+export interface ITotalCountOfIssuesResponse {
+  incomplete_results: boolean;
+  items: IIssues[];
+  total_count: number
 }
 
 export interface IAuthor {
@@ -49,4 +55,16 @@ export interface IAuthor {
   subscriptions_url?: string,
   type?: string,
   url?: string
+}
+
+export interface IShowInfoDialogData {
+  title: string;
+  issueTitle: string;
+  userLogin: string;
+  userUrl: string;
+  repository_url: string;
+  html_url: string;
+  number: number;
+  state: boolean;
+  created_at: Date;
 }

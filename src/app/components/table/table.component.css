@@ -6,3 +6,11 @@ table {
   cursor: pointer;
   opacity: .7;
 }
+
+::ng-deep th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, .id-column {
+  min-width: 65px !important;
+}
+
+::ng-deep th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  max-width: 180px !important;
+}
