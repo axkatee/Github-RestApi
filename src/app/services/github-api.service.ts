@@ -19,7 +19,7 @@ export class GithubApiService {
     const api: string = `${environment.githubIssuesUrl}=${page}&per_page=${itemsPerPage}`;
     return this.http.get(api).pipe(
       catchError(err => {
-        this.notification.open('Request limit exceeded', 'ok', notificationConfig);
+        this.notification.open(err.message, 'ok', notificationConfig);
         return throwError(err);
       }));
   }
@@ -27,7 +27,7 @@ export class GithubApiService {
   getNumberOfIssues(): Observable<any> {
     return this.http.get(environment.githubApiUrl).pipe(
       catchError(err => {
-        this.notification.open('Request limit exceeded', 'ok', notificationConfig);
+        this.notification.open(err.message, 'ok', notificationConfig);
         return throwError(err);
       }));
   }

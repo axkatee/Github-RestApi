@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  githubApiUrl: 'https://api.github.com/search/issues?q=repo:angular/angular%20is:issue',
+  githubApiUrl: 'https://api.github.com/search/issues?q=repo:angular/angular%20is:issue&per_page=10',
   githubIssuesUrl: 'https://api.github.com/repos/angular/angular/issues?page'
 };
 
