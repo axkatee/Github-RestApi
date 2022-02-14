@@ -11,6 +11,7 @@ export interface IIssue {
 
 export interface ITotalCountOfIssuesResponse {
   total_count: number;
+  items: IIssue[];
 }
 
 export interface IAuthor {

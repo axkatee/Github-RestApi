@@ -6,8 +6,6 @@ import { GithubApiService } from "../../services/github-api.service";
 import { InfoDialogComponent } from "../info-dialog/info-dialog.component";
 import { IAuthor, IIssue, ITotalCountOfIssuesResponse } from "../../interfaces/interfaces";
 
-const initPage: number = 1;
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -29,7 +27,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getNumberOfIssues();
-    this.getIssues(initPage, this.pageSizeOptions[0]);
   }
 
   getIssues(page: number, itemsPerPage: number): void {
@@ -40,6 +37,8 @@ export class TableComponent implements OnInit {
 
   getNumberOfIssues(): void {
     this.apiService.getNumberOfIssues().subscribe((res: ITotalCountOfIssuesResponse) => {
+      const firstInitIssues = res.items.slice(0, 10);
+      this.setIssues(firstInitIssues);
       this.totalCountOfIssues = res.total_count;
     });
   }
