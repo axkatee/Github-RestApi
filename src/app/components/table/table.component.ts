@@ -4,7 +4,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatTableDataSource } from "@angular/material/table";
 import { GithubApiService } from "../../services/github-api.service";
 import { InfoDialogComponent } from "../info-dialog/info-dialog.component";
-import { IAuthor, IIssues, ITotalCountOfIssuesResponse } from "../../interfaces/interfaces";
+import { IAuthor, IIssue, ITotalCountOfIssuesResponse } from "../../interfaces/interfaces";
 
 @Component({
   selector: 'app-table',
@@ -15,9 +15,10 @@ export class TableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   public totalCountOfIssues: number = 0;
-  public issuesData: IIssues[] = [];
+  public issuesData: IIssue[] = [];
   public displayedColumns: string[] = ['id', 'title', 'author', 'created_at', 'url'];
-  public dataSource: MatTableDataSource<IIssues>;
+  public pageSizeOptions: number[] = [10, 50, 100];
+  public dataSource: MatTableDataSource<IIssue>;
 
   constructor(
     private apiService: GithubApiService,
@@ -25,12 +26,12 @@ export class TableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getIssues(1, 10);
     this.getNumberOfIssues();
+    this.getIssues(1, 10);
   }
 
   getIssues(page: number, itemsPerPage: number): void {
-    this.apiService.getIssues(page, itemsPerPage).subscribe((issues: IIssues[]) => {
+    this.apiService.getIssues(page, itemsPerPage).subscribe((issues: IIssue[]) => {
       this.setIssues(issues);
     });
   }
@@ -41,21 +42,19 @@ export class TableComponent implements OnInit {
     });
   }
 
-  setIssues(issues: IIssues[]): void {
+  setIssues(issues: IIssue[]): void {
     this.issuesData = issues;
-    this.dataSource = new MatTableDataSource<IIssues>(this.issuesData);
+    this.dataSource = new MatTableDataSource<IIssue>(this.issuesData);
     this.dataSource.sort = this.sort;
   }
 
-  openDialog(issueId: string): void {
-    const selectedIssue: IIssues = this.issuesData.find(issue => issue.id === issueId);
-    const { created_at, number, repository_url, state, title, html_url, user } = selectedIssue;
+  openDialog(selectedIssue: IIssue): void {
+    const { id, created_at, number, repository_url, state, title, html_url, user } = selectedIssue;
     const author: IAuthor = user;
 
     this.dialog.open(InfoDialogComponent, {
-      width: '500px',
       data: {
-        title: `Info about issue with id: ${issueId}`,
+        title: `Info about issue with id: ${id}`,
         issueTitle: title,
         userLogin: author.login,
         userUrl: author.html_url,

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from "rxjs";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { environment, notificationConfig } from "../../environments/environment";
+import { environment } from "../../environments/environment";
+import { notificationConfig } from "../configs/config";
 
 @Injectable({
   providedIn: 'root'
