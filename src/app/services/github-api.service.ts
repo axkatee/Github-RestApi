@@ -24,7 +24,7 @@ export class GithubApiService {
       }));
   }
 
-  getNumberOfIssues(): Observable<any> {
+  getIssuesForFirstInitAndNumberOfIssues(): Observable<any> {
     return this.http.get(environment.githubApiUrl).pipe(
       catchError(err => {
         this.notification.open(err.message, 'ok', notificationConfig);

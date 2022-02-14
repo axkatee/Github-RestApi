@@ -36,7 +36,7 @@ export class TableComponent implements OnInit {
   }
 
   getNumberOfIssuesAndDisplayThem(): void {
-    this.apiService.getNumberOfIssues().subscribe((res: ITotalCountOfIssuesResponse) => {
+    this.apiService.getIssuesForFirstInitAndNumberOfIssues().subscribe((res: ITotalCountOfIssuesResponse) => {
       this.setIssues(res.items);
       this.totalCountOfIssues = res.total_count;
     });
