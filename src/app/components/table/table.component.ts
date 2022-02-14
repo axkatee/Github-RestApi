@@ -26,7 +26,7 @@ export class TableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getNumberOfIssues();
+    this.getNumberOfIssuesAndDisplayThem();
   }
 
   getIssues(page: number, itemsPerPage: number): void {
@@ -35,7 +35,7 @@ export class TableComponent implements OnInit {
     });
   }
 
-  getNumberOfIssues(): void {
+  getNumberOfIssuesAndDisplayThem(): void {
     this.apiService.getNumberOfIssues().subscribe((res: ITotalCountOfIssuesResponse) => {
       const firstInitIssues = res.items.slice(0, 10);
       this.setIssues(firstInitIssues);
