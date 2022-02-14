@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { IShowInfoDialogData } from "../../interfaces/interfaces";
 
 @Component({
@@ -9,7 +9,7 @@ import { IShowInfoDialogData } from "../../interfaces/interfaces";
 export class InfoDialogComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<IShowInfoDialogData>,
+    private dialogRef: MatDialogRef<IShowInfoDialogData>,
     @Inject(MAT_DIALOG_DATA) public data: IShowInfoDialogData
   ) { }
 
