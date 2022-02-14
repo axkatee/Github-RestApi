@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from "rxjs";
-import { environment } from "../../environments/environment";
-import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { environment, notificationConfig } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GithubApiService {
-  private notificationConfig: MatSnackBarConfig = {
-    duration: 3000,
-    horizontalPosition: 'end',
-    verticalPosition: 'top'
-  }
 
   constructor(
     private http: HttpClient,
@@ -23,7 +18,7 @@ export class GithubApiService {
     const api: string = `${environment.githubIssuesUrl}=${page}&per_page=${itemsPerPage}`;
     return this.http.get(api).pipe(
       catchError(err => {
-        this.notification.open('Request limit exceeded', 'ok', this.notificationConfig);
+        this.notification.open('Request limit exceeded', 'ok', notificationConfig);
         return throwError(err);
       }));
   }
@@ -31,7 +26,7 @@ export class GithubApiService {
   getNumberOfIssues(): Observable<any> {
     return this.http.get(environment.githubApiUrl).pipe(
       catchError(err => {
-        this.notification.open('Request limit exceeded', 'ok', this.notificationConfig);
+        this.notification.open('Request limit exceeded', 'ok', notificationConfig);
         return throwError(err);
       }));
   }

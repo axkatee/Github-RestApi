@@ -2,10 +2,18 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { MatSnackBarConfig } from "@angular/material/snack-bar";
+
 export const environment = {
   production: false,
   githubApiUrl: 'https://api.github.com/search/issues?q=repo:angular/angular%20is:issue',
   githubIssuesUrl: 'https://api.github.com/repos/angular/angular/issues?page'
+};
+
+export const notificationConfig: MatSnackBarConfig = {
+  duration: 3000,
+  horizontalPosition: 'end',
+  verticalPosition: 'top'
 };
 
 /*
